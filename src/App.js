@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+import { Route, Switch } from 'react-router-dom';
+import { Container } from '@chakra-ui/react';
+
+// Components
+import ItemList from './components/ItemList';
+import Navbar from './components/Navbar';
+import Cart from './components/Cart';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <Container maxW='container.lg' bgColor='teal.100' borderColor='teal.300' borderWidth={3} borderRadius={10}>
+        <Switch>
+          <Route exact path='/cart' component={Cart} />
+          <Route exact path='/' component={ItemList} />
+        </Switch>
+      </Container>
+    </>
   );
-}
+};
 
 export default App;
